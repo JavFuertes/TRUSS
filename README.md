@@ -5,19 +5,18 @@ Structures that make optimal use of the material they are made of reduces the co
 ## Objective & Description:
 ---
 
-**Project Objective:** To find the optimal truss design
+<span style="font-size: larger;"><B>Project Objective:</B></span> To find the optimal truss design
+
 
 To achieve this project objective, we need to find the optimal set of nodal coordinates and cross-sectional properties. This will allow us to minimize the total weight of the structure while satisfying various constraints related to the structure's natural frequencies. Finding solutions with low mass that also meet the natural frequency constraints demonstrates a methodology to make structures more efficient and safe by using less material while ensuring structural integrity. Additionally, this project aims to explore the efficacy of current optimization methods and potentially improve them through the implementation of machine learning methods.
 
-
-|              |              |
 |--------------|--------------|
-| ![Kanarachos optimal Solution](TRUSS1\TRUSS1\口Reading\Figures\Truss Solutions\Kanarachos_Opt.png) | ![TRUSS optimal solution](TRUSS1\TRUSS1\口Reading\Figures\Truss Solutions\TRUSS_Opt.png) |
-| Kanarachos Truss typology optimal Solution | TRUSS Truss typology optimal Solution |
+| ![Kanarachos optimal Solution](TRUSS1/TRUSS1/口Reading/Figures/Truss Solutions/Kanarachos_Opt.png) | ![TRUSS optimal solution](TRUSS1/TRUSS1/口Reading/Figures/Truss Solutions/TRUSS_Opt.png) |
+| **Kanarachos** Truss typology optimal Solution | **TRUSS** Truss typology optimal Solution |
 
 ## Basic tour of the Bayesian Optimization analysis
 
-![Description of the GIF](TRUSS1\TRUSS1\口Reading\Figures\Solution approach\TrussBOPT_EOP.gif)
+![Description of the GIF](TRUSS1/TRUSS1/口Reading/Figures/Solution approach/TrussBOPT_EOP.gif)
 
 ### In detail,
 
@@ -44,6 +43,7 @@ A small breakdown of the progress made in the project [TrussBOPT.pptx].
 ### Useful links
 The original publication:
 - Approach undertaken by Kanarachos through a pure optimisation approach, check this paper for the publication: [https://dx.doi.org/10.1016/j.compstruc.2016.11.005](https://dx.doi.org/10.1016/j.compstruc.2016.11.005)
+
 Tutorials on Bayesian optimization:
 - [https://towardsdatascience.com/bayesian-optimization-a-step-by-step-approach-a1cb678dd2ec](https://towardsdatascience.com/bayesian-optimization-a-step-by-step-approach-a1cb678dd2ec)
 - [https://www.ritchievink.com/blog/2019/08/25/algorithm-breakdown-bayesian-optimization](https://www.ritchievink.com/blog/2019/08/25/algorithm-breakdown-bayesian-optimization)
