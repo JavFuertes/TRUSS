@@ -4,28 +4,35 @@ Structures that make optimal use of the material they are made of reduces the co
 
 <center>
 
-| ![Multi-dimensional solution space](https://www.mathworks.com/help/examples/stats/win64/ParellelBayeianOptimizationExample_01.png) | ![TRUSS optimal solution](TRUSS1/TRUSS1/口Reading/Figures/Kanarachos/KNInitial.png) |
-|----------------------------------------------------|----------------------------------------------------|
-| **Figure 1**: Visualisation of a Multi-dimensional solution space | **Figure 2**: TRUSS optimisation problem formulation |
+<table style="width: 100%;">
+  <tr>
+    <td style="width: 50%; text-align: center;"><img src="https://www.mathworks.com/help/examples/stats/win64/ParellelBayeianOptimizationExample_01.png" alt="Multi-dimensional solution space"></td>
+    <td style="width: 50%; text-align: center;"><img src="reading/Figures/solution_approach/TrussBOPT_formulation.png" alt="TRUSS optimal solution"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>Figure 1:</strong> Visualisation of a Multi-dimensional solution space</td>
+    <td style="text-align: center;"><strong>Figure 2:</strong> TRUSS optimisation problem formulation</td>
+  </tr>
+</table>
+
 </center>
 
 
+
 ## Objective & Description:
----
 
 <span style="font-size: larger;"><B>Project Objective:</B></span> To find the optimal truss design
 
 
 To achieve this project objective, we need to find the optimal set of nodal coordinates and cross-sectional properties. This will allow us to minimize the total weight of the structure while satisfying various constraints related to the structure's natural frequencies. Finding solutions with low mass that also meet the natural frequency constraints demonstrates a methodology to make structures more efficient and safe by using less material while ensuring structural integrity. Additionally, this project aims to explore the efficacy of current optimization methods and potentially improve them through the implementation of machine learning methods.
 
-| ![Kanarachos optimal Solution](Reading/Figures/Truss Solutions/Kanarachos_Opt.png) | ![TRUSS optimal solution](Reading/Figures/Truss Solutions/TRUSS_Opt.png) |
+| ![Kanarachos optimal Solution](reading/Figures/truss_solutions/Kanarachos_Opt.png) | ![TRUSS optimal solution](reading/Figures/truss_solutions/TRUSS_Opt.png) |
 |----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
 | **Kanarachos** Truss typology optimal Solution                                                            | **TRUSS** Truss typology optimal Solution                                                        |
 
-
 ## Basic tour of the Bayesian Optimization analysis
 
-![Description of the GIF](Reading/Figures/Solution approach/TrussBOPT_EOP.gif)
+![Description of the GIF](reading/Figures/solution_approach/TrussBOPT_EOP.gif)
 
 ### In detail,
 
