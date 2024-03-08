@@ -75,7 +75,7 @@ We initiate a random search in the solution space by taking n random samples fro
          
         return LOSS
 ```
-As we can see we compute the **mass** and **first three eigenfrequencies** of the truss. We then calculate a normalised frequency penalty by dividing the difference between the frequencies with its constraints and applying a penalty factor in case that the difference is smaller than zero. Through this method we are able  to penalise solutions that do not meet the constraints but we also dont excessively penalise potentially close solutions to the minima abd throw off the gaussian process. 
+As we can see we compute the **mass** and **first three eigenfrequencies** of the truss. We then calculate a normalised frequency penalty by dividing the difference between the frequencies with its constraints and applying a penalty factor in case that the difference is smaller than zero. Through this method we are able  to penalise solutions that do not meet the constraints but we also don't excessively penalise potentially close solutions to the minima abd throw off the gaussian process. 
 
 Then in the case that the constraints have been met we take the current minimum mass and calculate the difference between the current mass and the lowest obtained mass and normalise it by dividing the difference by minimum mass. This approach allows for the mass penalty to always update as better solutions are obtained. 
 
@@ -116,7 +116,7 @@ $$
 
 ### 3. The algorithm process 
 
-We now intiate the optimsier algorithm, this is done by iteratively try to minimise the loss through gradient based methods `optimize_acqf` which is guided by our acquisition function, in this case the `Expectedimprovement` function which can be expressed as follows,
+We now initiate the optimiser algorithm, this is done by iteratively try to minimise the loss through gradient based methods `optimize_acqf` which is guided by our acquisition function, in this case the `Expectedimprovement` function which can be expressed as follows,
 
 $$
 \text{EI}(x) = \mathbb{E}\bigl[
@@ -126,7 +126,7 @@ $$
 
 The EI function is a simple yet effective way to guide the minimiser since we will always optimise the region where we believe the potential gain is highest. To do so we sample from our gaussian process and compare it with out current best solution $f^{*}$ we then perform $\text{argmin}(\text{EI}(x))$ for the n first solutions `raw_samples` which are then ran through the minimiser.
 
-In addition to this, the optimiser is set with some predisposed bounds where we can ensure as an example that our 15 cross section do not yield negative values leading to complex eigenfrequencies. We also set a number of `num_restarts` to help the minimiser to reset in case it gets stuck in local minima. Then the targuets are unnormalised to be evaluated by the loss function and then with the results we update the posterior and refit the gaussian process through `set_train_data`. The above process is all contained in the following code excerpt through use of the `BoTorch` module, our own Bayesian optimiser can also be found in [TRUSS_BOPT.py](TRUSS1/truss_bridge/TRUSS_Bopt.py),
+In addition to this, the optimiser is set with some predisposed bounds where we can ensure as an example that our 15 cross section do not yield negative values leading to complex eigenfrequencies. We also set a number of `num_restarts` to help the minimiser to reset in case it gets stuck in local minima. Then the targets are unnormalised to be evaluated by the loss function and then with the results we update the posterior and refit the gaussian process through `set_train_data`. The above process is all contained in the following code excerpt through use of the `BoTorch` module, our own Bayesian optimiser can also be found in [TRUSS_BOPT.py](TRUSS1/truss_bridge/TRUSS_Bopt.py),
 
 ```python
 def SingleBOPT(Y_init_single, X_init_single, n_iter, batch_size, Nrestats, objective_function):
@@ -155,7 +155,7 @@ def SingleBOPT(Y_init_single, X_init_single, n_iter, batch_size, Nrestats, objec
         fit_gpytorch_model(mll)
     return X_init_single, Y_init_single
 ```
-And thats it! Thats how easy a proceedure is neccessary to perform efficient informed optimisation with non implementable constraints. The above process is also described in the following figure,
+And thats it! Thats how easy a procedure is necessary to perform efficient informed optimisation with non implementable constraints. The above process is also described in the following figure,
 
 ![Description of the GIF](reading/Figures/solution_approach/TrussBOPT_EOP.gif)
 
@@ -191,7 +191,7 @@ The algorithm seems to find a global minimum is quite fast fashion, after findin
 
 **Figure 6:** Optimisation run with the different solutions per time step. 
 
-A convergence study of the algorithm with loose hyperparameter tuning was performed with 5 runs, where the mean and  95th percentile confidence criterion where computed.As we can observe the variance between runs is small for exception of run 1 which gave a very erratic behaviour which had a strong influence o the standard deviation. Despite this we can observe most importantly that despite different initiation parameters the convergence shape is similar for most runs which makes refernce to a robust convergence, although this claim should be investigated further and does not account for the previous hyperparameter tuning.
+A convergence study of the algorithm with loose hyperparameter tuning was performed with 5 runs, where the mean and  95th percentile confidence criterion where computed.As we can observe the variance between runs is small for exception of run 1 which gave a very erratic behaviour which had a strong influence o the standard deviation. Despite this we can observe most importantly that despite different initiation parameters the convergence shape is similar for most runs which makes reference to a robust convergence, although this claim should be investigated further and does not account for the previous hyperparameter tuning.
 
 The solution to the yielded the following graph,
 
@@ -205,7 +205,7 @@ The solution to the yielded the following graph,
 - 口Reading includes the original paper and reference, investigation and reference results obtained with other optimization approaches, check this paper: [Kanarachos et al., 2017](https://dx.doi.org/10.1016/j.compstruc.2016.11.005)
 - **pyJive**: a finite element code that can compute the natural frequencies of a given truss design, which can be treated as black box model for this project
 - **truss_bridge**: a directory with input files for the case of the project, including a [notebook](truss_bridge/truss_bridge.ipynb) with a demonstration of how to interact with the finite element code
-- **Truss notebook**: The Jupyter notebook containing the implementation of the Bayesian optimiser and the posterior analysis. It covers a from blank implementation, a solution through Botorch module and a posterior analysis on the behaviour of the algorithm against [Kanarachos et al., 2017](https://dx.doi.org/10.1016/j.compstruc.2016.11.005) and its covergence behaviour. 
+- **Truss notebook**: The Jupyter notebook containing the implementation of the Bayesian optimiser and the posterior analysis. It covers a from blank implementation, a solution through Botorch module and a posterior analysis on the behaviour of the algorithm against [Kanarachos et al., 2017](https://dx.doi.org/10.1016/j.compstruc.2016.11.005) and its convergence behaviour. 
 - **End of project presentation**: A breakdown of the project and some of its detail can be found in [TrussBOPT.pptx](TRUSS1/TRUSS1/TrussBOPT_EOP.pptx).
 
 ### Useful links
