@@ -176,7 +176,7 @@ The following discussion will evaluate the success of the project through benchm
 
 As can be seen Kanarachos et al., 2017 and TRUSS produce very similar results, Kanarachos outperforms TRUSS achieving a lower mass whilst TRUSS optimises more for the Natural frequencies. One can also observe how TRUSS is computationally more efficient than Kanarachos converging much faster to a solution even as will be seen later plateauing as it converges to the global minima. Kanarachos did not provide a number of iterations with which its algorithm converge but it is expected TRUSS solution to be significantly lower although per iteration it is likely TRUSS has a longer iteration time. The main benchmarks measure against the publication are the following, 
 
-|                   | Cross Section Average [$m^{2}$] | Natural Frequency Average [$\omega$] | Mass [kg] | Convergence time [s] |
+|                   | Cross Section Average [m^2] | Natural Frequency Average [rad/s] | Mass [kg] | Convergence time [s] |
 |-------------------|-----------------------------|-----------------------------------|-----------|----------------------|
 | Kanarachos model | 0.000424                    | 41.572427                         | 360.077107| 473                  |
 | TRUSS model       | 0.000433                    | 40.809468                         | 364.825316| 315                  |
@@ -192,7 +192,11 @@ We can observe how both solutions for the first 3 modal shapes are similar, yet 
 
 ### 2. The TRUSS algorithm and its convergence
 
+The algorithm seems to find a global minimum is quite fast fashion, after finding this minimum it then tends to plateau and begin a random walk where it ocassionally believes to find a better solution although this is not the case. The below figure showing an optimisation run illustrates how the loss function although suitable can still be improved, since the lowest loss does not correspond to the lowest mass solution that meets the constraints. Moreover, the solution in multiple runs has always been found at the bottom of the first descending branch therefore it might be in best interest to implement a form or early stopping to achieve even faster convergence times. In any case the best solution is still strong and robust.
 
+![TRUSS convergence path](reading/Figures/solution_approach/Truss_convegence.gif)
+
+**Figure 6:** Optimisation run with the different solutions per time step. 
 
 A convergence study of the algorithm with loose hyperparameter tuning was performed with 5 runs, where the mean and  95th percentile confidence criterion where computed.As we can observe the variance between runs is small for exception of run 1 which gave a very erratic behaviour which had a strong influence o the standard deviation. Despite this we can observe most importantly that despite different initiation parameters the convergence shape is similar for most runs which makes refernce to a robust convergence, although this claim should be investigated further and does not account for the previous hyperparameter tuning.
 
@@ -200,7 +204,7 @@ The solution to the yielded the following graph,
 
 ![TRUSS convergence behaviour](reading/Figures/convergence_study.png)
 
-**Figure 6:** TRUSS convergence study. 
+**Figure 7:** TRUSS convergence study. 
 
  
 

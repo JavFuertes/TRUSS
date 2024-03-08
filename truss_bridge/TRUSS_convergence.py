@@ -28,7 +28,7 @@ def loss_function_figure(total_loss):
         marker=dict(color='#EC6842', size=6)
     ))
 
-    min_mass_index = 30
+    min_mass_index = 32
     fig.add_trace(go.Scatter(
         x=[min_mass_index],
         y=[total_loss[min_mass_index]],
