@@ -1,15 +1,11 @@
 # Bayesian optimization for truss structures
 
-
-
-
-
 Structures that make optimal use of the material they are made of reduces the cost and environmental impact of their construction as the amount of material required. Optimization of structural design is a challenging task because of the high number of design parameters and the relatively expensive evaluation of the suitability of any given design. Standard optimization techniques in high-dimensional design space require a very large number of possible designs that need to be evaluated. In structural analysis, where evaluating the objective function and checking the constraints involves the solution of a structural mechanics problem, e.g. with finite elements, this quickly becomes very expensive, even if the model is relatively simple from structural point of view. Bayesian optimization is a machine-learning-based optimization technique that aims to reduce the number of evaluations of the objective function through data-driven exploration of the design space with a probabilistic surrogate.
 
 > <span style="font-size: larger;"><B>Project Objective:</B></span> To find the optimal truss design <br>
 > To solve this optimisation problem, we need to find the optimal set of nodal coordinates and cross-sectional properties. This will allow us to minimize the total weight of the structure while satisfying various constraints related to the structure's natural frequencies. We will evaluate the bayesian optimisation approach by comparing it with [Kanarachos et al., 2017](https://dx.doi.org/10.1016/j.compstruc.2016.11.005),
 
-| ![Multi-dimensional solution space](https://www.mathworks.com/help/examples/stats/win64/ParellelBayeianOptimizationExample_01.png)| ![TRUSS optimal solution](reading/Figures/solution_approach/TrussBOPT_formulation.png)|
+| ![Multi-dimensional solution space](https://www.mathworks.com/help/examples/stats/win64/ParellelBayeianOptimizationExample_01.png)| <img src="reading/Figures/solution_approach/TrussBOPT_formulation.png" alt="TRUSS optimal solution" style="width: 1100px;">|
 |----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
 |**Figure 1:** Visualisation of a Multi-dimensional solution space | **Figure 2:** TRUSS optimisation problem formulation |
 
@@ -63,10 +59,13 @@ We then fit the initiated vector (n-vectors of random areas for the 14 element a
 $$
 k(\mathbf{x}, \mathbf{x'}) = \frac{\sigma_{f}^2}{\Gamma(\nu)2^{\nu-1}} \left(1 + \frac{\left\| \sqrt{2\nu}d/\ell \right\|^2}{\nu}\right)^{-\nu}K_{\nu}\left(\sqrt{2\nu}d/\ell\right)
 $$ 
+
 Additionally, we then set the `SingleTaskGP` loss evaluation through the `ExactMarginalLogLikelihood`, 
+
 $$
 \mathcal{L} = p_f(\mathbf{y} | \mathbf{X}) = \int p \left( \mathbf{y} | f(\mathbf{X}) \right) \cdot p(f(\mathbf{X}) | \mathbf{X}) \, df \quad \text{(3)}
 $$
+
 >**NOTE**: The decision to use a single task gp was a decision to simplify the problem through accounting the different components of the loss function through additional hyperparameters (i.e the NF and mass component weights of the loss function) nevertheless, it could be interesting to explore the use multi-task GP's.
 
 ### 3. The algorithm process 
