@@ -14,6 +14,7 @@ We start with an initial truss in Pratt arrangement with **27 cross sections and
 $$
 OF = \min_{\theta,\gamma} \mathbb{E}_{\sim P_{\text{data}}}[L(\gamma ;\theta)] \quad \text{(1)}
 $$
+
 $$
 \text{with solution space} \left\{
 \begin{array}{c|cccccc}
@@ -24,6 +25,7 @@ $$
 \end{array} 
 \right. \quad \text{(2)}
 $$
+
 $$
 \text{subject to constraints} \quad \left\{
 \begin{array}{l}
