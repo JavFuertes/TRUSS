@@ -53,6 +53,20 @@ The solution method employed in the Bayesian optimizer involves several key step
 
 We initiate by performing a random search in the solution space. To do so we first constrain our solution space by defining our **bounds** to exploration locations which may produce sensical values and hence not throw off the algorithm excessively when searching. We then **normalise** our data through `MinMaxscaler` for the contributions of the coordinates and and areas to be of equal weight despite unequal magnitudes. We then initiate the other hyperparameters of the `TRUSS` object, this includes the loss function components such as the violation factor and corresponding weights of the mass and frequency components of the loss function which if well formulated should evaluate the proximity to a optimal solution.
 
+```python
+for _ in range(n_samples):
+    x_c = np.copy(x_0) # Reset seed
+    x_random = TRUSS1.Initial_guess(optim_dims)
+    x_c[optim_dims] = x_random
+    x_list.append(x_c)
+# 
+trap = io.StringIO()
+with redirect_stdout(trap):
+    for x in x_list:
+        LOSS = TRUSS1.loss_function(x)
+        y_list.append(LOSS)
+```
+
 ### 2. Gaussian process characteristics & fitting
 
 We then fit the initiated vector (n-vectors of random areas for the 14 element and the top 5 coordinates) with the calculated n targets (values of the loss function) to a single task Gaussian process `SingleTaskGP` through the `set_train_data` function. This Gaussian process makes use by default use of a Matern kernel although this can be changed through the `covar_module` since the use of Matern kernel is of interest to us this was left unchanged. The Matern kernel can be expressed in the following way,
@@ -71,9 +85,17 @@ $$
 
 ### 3. The algorithm process 
 
-We now intiate the convergence solver where we iteratively try to minimise the loss thorugh a gradient descent method in the `optimize_acqf` and through the choice of the `Expectedimprovement` function
+We now intiate the optimsier algorithm, this is done by iteratively try to minimise the loss through gradient based methods `optimize_acqf` which is guided by our acquisition function, in this case the `Expectedimprovement` function which can be expressed as follows,
 
-Moreover all the above process was narrowed down into the following code excerpt through `BoTorch`, our own Bayesian optimiser can also be found in [TRUSS_BOPT.py](TRUSS1/truss_bridge/TRUSS_Bopt.py),
+$$
+\text{EI}(x) = \mathbb{E}\bigl[
+\max(y - f^*, 0) \mid y\sim \mathcal{N}(\mu(x), \sigma^2(x))
+\bigr]
+$$
+
+The EI function is a simple yet effective way to guide the minimiser since we will always optimise the region where we believe the potential gain is highest. To do so we sample from our gaussian process and compare it with out current best solution $f^{*}$ we then perform $\text{argmin}(\text{EI}(x))$ for the n first solutions `raw_samples` which are then ran through the minimiser.
+
+In addition to this, the optimiser is set with some predisposed bounds where we can ensure as an example that our 15 cross section do not yield negative values leading to complex eigenfrequencies. We also set a number of `num_restarts` to help the minimiser to reset in case it gets stuck in local minima. Then the targuets are unnormalised to be evaluated by the loss function and then with the results we update the posterior and refit the gaussian process through `set_train_data`. The above process is all contained in the following code excerpt through use of the `BoTorch` module, our own Bayesian optimiser can also be found in [TRUSS_BOPT.py](TRUSS1/truss_bridge/TRUSS_Bopt.py),
 
 ```python
 def SingleBOPT(Y_init_single, X_init_single, n_iter, batch_size, Nrestats, objective_function):
@@ -102,7 +124,7 @@ def SingleBOPT(Y_init_single, X_init_single, n_iter, batch_size, Nrestats, objec
         fit_gpytorch_model(mll)
     return X_init_single, Y_init_single
 ```
-And thats it! Thats how easy a proceedure we can make use of to perform efficient informed optimisation with non implementable constraints. The above process is also described in the following figure,
+And thats it! Thats how easy a proceedure is neccessary to perform efficient informed optimisation with non implementable constraints. The above process is also described in the following figure,
 
 ![Description of the GIF](reading/Figures/solution_approach/TrussBOPT_EOP.gif)
 
