@@ -18,7 +18,6 @@ $$
 $$
 \text{with solution space:} 
 \begin{pmatrix}
-\gamma_1 & \gamma_2 & \cdots & \gamma_{14} \\
 f(\theta_1, \gamma_1) & f(\theta_1, \gamma_2) & \cdots & f(\theta_1, \gamma_{14}) \\
 \vdots  & \vdots  & \ddots  & \vdots \\
 f(\theta_5, \gamma_1) & f(\theta_5, \gamma_2) & \cdots & f(\theta_5, \gamma_{14})
