@@ -12,7 +12,7 @@ Structures that make optimal use of the material they are made of reduces the co
 We start with an initial truss in Pratt arrangement with **27 cross sections and 37 elements**. Through engineering judgement in structural mechanics we can employ symmetry and forego the lower cord to reduce this problem from **64 dimensions to 19 dimensions** and therefore solve the curse of dimensionality. The problem formulation is the following, 
 
 $$
-OF = \min_{\theta, \gamma} \mathbb{E}_{P_{\text{{data}}}}[L(\gamma; \theta)] \quad \text{(1)}
+OF = \min_{\theta, \gamma} E[P_{\text{data}}(L(\gamma, \theta))] \quad (1)
 $$
 
 $$
