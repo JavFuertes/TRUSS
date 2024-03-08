@@ -12,18 +12,17 @@ Structures that make optimal use of the material they are made of reduces the co
 We start with an initial truss in Pratt arrangement with **27 cross sections and 37 elements**. Through engineering judgement in structural mechanics we can employ symmetry and forego the lower cord to reduce this problem from **64 dimensions to 19 dimensions** and therefore solve the curse of dimensionality. The problem formulation is the following, 
 
 $$
-OF = \min_{\theta,\gamma} \mathbb{E}_{\sim P_{\text{data}}}[L(\gamma ;\theta)] \quad \text{(1)}
+OF = \min_{\theta,\gamma} \mathbb{E}_{P_{\text{data}}}[L(\gamma ;\theta)] \quad \text{(1)}
 $$
 
 $$
-\text{with solution space} \left\{
-\begin{array}{c|cccccc}
-& \gamma_1 & \gamma_2 & \dots & \gamma_{14} \\ \hline
-\theta_1 & f(\theta_1, \gamma_1) & f(\theta_1, \gamma_2) & \dots & f(\theta_1, \gamma_{14}) \\
-\vdots  & \vdots  & \vdots  & \ddots  & \vdots \\
-\theta_5 & f(\theta_5, \gamma_1) & f(\theta_5, \gamma_2) & \dots & f(\theta_5, \gamma_{14})
-\end{array} 
-\right. \quad \text{(2)}
+\text{with solution space:} 
+\begin{pmatrix}
+\gamma_1 & \gamma_2 & \cdots & \gamma_{14} \\
+f(\theta_1, \gamma_1) & f(\theta_1, \gamma_2) & \cdots & f(\theta_1, \gamma_{14}) \\
+\vdots  & \vdots  & \ddots  & \vdots \\
+f(\theta_5, \gamma_1) & f(\theta_5, \gamma_2) & \cdots & f(\theta_5, \gamma_{14})
+\end{pmatrix} \quad \text{(2)}
 $$
 
 $$
@@ -35,9 +34,6 @@ $$
 \end{array}
 \right. \quad \text{(3)}
 $$
-
-
-As can be seen we work with some constraints 
 
 Solving the above problem requires the use of gradient based methods which we build on top our Machine learning model supported by different functions to facilitate the exploration and learning of the solution space. The before approach serves to illustrate the efficacy of expanding current optimization methods and through implementation of machine learning methods and how we can improve the convergence speed and problem complexity of possible problems. 
 
@@ -88,7 +84,6 @@ Then in the case that the constraints have been met we take the current minimum 
 The loss is finally computed by multiplying the the normalised **mass** and **frequency** components by user-specified **weight factors**. 
 
 We then **normalise** our data through `MinMaxscaler` for the contributions of the coordinates and and areas to be of equal weight despite unequal magnitudes. We then initiate the other hyperparameters of the `TRUSS` object, this includes the loss function components such as the violation factor and corresponding weights of the mass and frequency components of the loss function which if well formulated should evaluate the proximity to a optimal solution.
-
 
 The following shows the initiation of the random search,
 ```python
