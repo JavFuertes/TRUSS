@@ -12,7 +12,7 @@ Structures that make optimal use of the material they are made of reduces the co
 We start with an initial truss in Pratt arrangement with **27 cross sections and 37 elements**. Through engineering judgement in structural mechanics we can employ symmetry and forego the lower cord to reduce this problem from **64 dimensions to 19 dimensions** and therefore solve the curse of dimensionality. The problem formulation is the following, 
 
 $$
-OF = \min_{\theta,\gamma} \mathbb{E}_{P_{\text{data}}}[L(\gamma ;\theta)] \quad \text{(1)}
+OF = \min_{\theta, \gamma} \mathbb{E}_{P_{\text{{data}}}}[L(\gamma; \theta)] \quad \text{(1)}
 $$
 
 $$
@@ -30,8 +30,7 @@ $$
 \omega_1 \geq 20, \\
 \omega_2 \geq 40, \quad \text{and} \quad A_{1-15} > 0 \\
 \omega_3 \geq 60, \\
-\end{array}
-\right. \quad \text{(3)}
+\end{array} \right. \quad \text{(3)}
 $$
 
 Solving the above problem requires the use of gradient based methods which we build on top our Machine learning model supported by different functions to facilitate the exploration and learning of the solution space. The before approach serves to illustrate the efficacy of expanding current optimization methods and through implementation of machine learning methods and how we can improve the convergence speed and problem complexity of possible problems. 
