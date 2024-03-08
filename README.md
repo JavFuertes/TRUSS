@@ -11,30 +11,30 @@ Structures that make optimal use of the material they are made of reduces the co
 
 We start with an initial truss in Pratt arrangement with **27 cross sections and 37 elements**. Through engineering judgement in structural mechanics we can employ symmetry and forego the lower cord to reduce this problem from **64 dimensions to 19 dimensions** and therefore solve the curse of dimensionality. The problem formulation is the following, 
 
-OF = \(\min_{\theta,\gamma} \mathbb{E}_{\sim P_{\text{data}}}[L(\gamma ;\theta)]\) \quad \text{(1)}
+$$
+OF = \min_{\theta,\gamma} \mathbb{E}_{\sim P_{\text{data}}}[L(\gamma ;\theta)] \quad \text{(1)}
+$$
 
-with solution space
-
-\[
-\begin{array}{c|cccc}
+$$
+\text{with solution space} \left\{
+\begin{array}{c|cccccc}
 & \gamma_1 & \gamma_2 & \dots & \gamma_{14} \\ \hline
 \theta_1 & f(\theta_1, \gamma_1) & f(\theta_1, \gamma_2) & \dots & f(\theta_1, \gamma_{14}) \\
 \vdots  & \vdots  & \vdots  & \ddots  & \vdots \\
 \theta_5 & f(\theta_5, \gamma_1) & f(\theta_5, \gamma_2) & \dots & f(\theta_5, \gamma_{14})
 \end{array} 
-\]
-\quad \text{(2)}
+\right. \quad \text{(2)}
+$$
 
-subject to constraints
-
-\[
+$$
+\text{subject to constraints} \quad \left\{
 \begin{array}{l}
 \omega_1 \geq 20, \\
 \omega_2 \geq 40, \quad \text{and} \quad A_{1-15} > 0 \\
 \omega_3 \geq 60, \\
 \end{array}
-\]
-\quad \text{(3)}
+\right. \quad \text{(3)}
+$$
 
 
 As can be seen we work with some constraints 
