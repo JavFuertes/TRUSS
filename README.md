@@ -173,11 +173,11 @@ The following is the arrangement both studies make use in the optimisation run. 
 |-------------------|-----------------------------|-----------------------------------|-----------|
 | Initial truss | 0.00036                    | 29.5                        | 336| 
 
-The first three modal shapes of both trusses are the following,
+The first three modal shapes of initial truss are the following,
 
 |                   | Modal shape 1  | Modal shape 2 | Modal shape 3 |
 |-------------------|----------------|----------------|----------------|
-| Initial truss | ![Initial Modal shape 1](reading\Figures\truss_solutions\initial_NF1.png) | ![Initial Modal shape 2](reading/Figures/truss_solutions/initial_NF2.png) | ![Initial Modal shape 3](reading/Figures/truss_solutions/initial_NF3.png) |
+| Initial truss | ![Initial Modal shape 1](reading/Figures/truss_solutions/initial_NF1.png) | ![Initial Modal shape 2](reading/Figures/truss_solutions/initial_NF2.png) | ![Initial Modal shape 3](reading/Figures/truss_solutions/initial_NF3.png) |
 
 
 ### 1. Benchmarking against Kanarachos et al., 2017
