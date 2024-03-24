@@ -165,6 +165,21 @@ And thats it! Thats how easy a procedure is necessary to perform efficient infor
 
 The following discussion will evaluate the success of the project through benchmarking the TRUSS approach against [Kanarachos et al., 2017](https://dx.doi.org/10.1016/j.compstruc.2016.11.005) standard optimisation algorithm, this will be followed by an investigation into the TRUSS solution behaviour.
 
+### 0. Initial Truss arrangement by Kanarachos et al., 2017 and TRUSS
+
+The following is the arrangement both studies make use in the optimisation run. As you can observe the mass is relatively low due to the initiated cross sections although this is unimportant since the problems constraints are not met since all of the bridges natural frequencies are below the required [**20,40,60** | **8.90649126 29.59101061 50.01221715** ] therefore, the initiated Truss is an invalid one. 
+
+|                   | Cross Section Average [m^2] | Natural Frequency Average [rad/s] | Mass [kg] |
+|-------------------|-----------------------------|-----------------------------------|-----------|
+| Initial truss | 0.00036                    | 29.5                        | 336| 
+
+The first three modal shapes of both trusses are the following,
+
+|                   | Modal shape 1  | Modal shape 2 | Modal shape 3 |
+|-------------------|----------------|----------------|----------------|
+| Initial truss | ![Initial Modal shape 1](reading\Figures\truss_solutions\initial_NF1.png) | ![Initial Modal shape 2](reading/Figures/truss_solutions/initial_NF2.png) | ![Initial Modal shape 3](reading/Figures/truss_solutions/initial_NF3.png) |
+
+
 ### 1. Benchmarking against Kanarachos et al., 2017
 
 As can be seen Kanarachos et al., 2017 and TRUSS produce very similar results, Kanarachos outperforms TRUSS achieving a lower mass whilst TRUSS optimises more for the Natural frequencies. One can also observe how TRUSS is computationally more efficient than Kanarachos converging much faster to a solution even as will be seen later plateauing as it converges to the global minima. Kanarachos did not provide a number of iterations with which its algorithm converge but it is expected TRUSS solution to be significantly lower although per iteration it is likely TRUSS has a longer iteration time. The main benchmarks measure against the publication are the following, 
