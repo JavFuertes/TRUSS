@@ -25,13 +25,12 @@ f(\theta_5, \gamma_1) & f(\theta_5, \gamma_2) & \cdots & f(\theta_5, \gamma_{14}
 $$
 
 $$
-\text{subject to constraints} \quad \left\{
-\begin{array}{l}
+\text{subject to constraints} \quad \begin{cases}
 \omega_1 \geq 20, \\
 \omega_2 \geq 40, \\
 \omega_3 \geq 60, \\
-A_{1-15} > 0, \\
-\end{array} \right. \quad \text{(3)}
+A_{1-15} > 0,
+\end{cases} \quad \text{(3)}
 $$
 
 Solving the above problem requires the use of gradient based methods which we build on top our Machine learning model supported by different functions to facilitate the exploration and learning of the solution space. The before approach serves to illustrate the efficacy of expanding current optimization methods and through implementation of machine learning methods and how we can improve the convergence speed and problem complexity of possible problems. 
