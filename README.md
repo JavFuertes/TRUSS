@@ -28,8 +28,9 @@ $$
 \text{subject to constraints} \quad \left\{
 \begin{array}{l}
 \omega_1 \geq 20, \\
-\omega_2 \geq 40, \quad \text{and} \quad A_{1-15} > 0 \\
+\omega_2 \geq 40, \\
 \omega_3 \geq 60, \\
+A_{1-15} > 0, \\
 \end{array} \right. \quad \text{(3)}
 $$
 
